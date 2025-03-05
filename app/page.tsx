@@ -3,6 +3,8 @@ import { NotFound } from "./components/not-found";
 import { Profile } from "./components/profile";
 import { getGithubProfile } from "./lib/get-github-profile";
 
+export const revalidate = 3600;
+
 const yourGithubUsername = "jkotake";
 
 export default async function Home({
@@ -10,6 +12,7 @@ export default async function Home({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
+
   const profileData = await getGithubProfile(yourGithubUsername);
 
   if (!profileData) {
